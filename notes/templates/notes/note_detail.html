@@ -1,0 +1,17 @@
+{% extends "notes/base.html" %}
+
+{% block title %}{{ note.title|default:"Untitled" }}{% endblock %}
+
+{% block content %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h1 class="card-title">{{ note.title|default:"Untitled" }}</h1>
+            <p class="card-text">{{ note.content }}</p>
+            <small class="text-muted">Updated {{ note.updated_at }}</small>
+        </div>
+    </div>
+
+    <a href="{% url 'note_update' note.pk %}" class="btn btn-primary">Edit</a>
+    <a href="{% url 'note_delete' note.pk %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'note_list' %}" class="btn btn-link">← Back to all notes</a>
+{% endblock %}
